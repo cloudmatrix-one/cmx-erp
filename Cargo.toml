@@ -1,0 +1,21 @@
+[workspace]  
+resolver = "2"  
+members = [  
+    "crates/*",  
+    "sdk/*",  
+    "plugins/*"  
+,   "tests/wasm/wasmtest", 
+    "tests/wasm/plugins"]  
+  
+[workspace.dependencies]  
+    # 在这里统一管理版本，防止不同子工程用了不同版本的库  
+    tokio = { version = "1.32", features = ["full"] }  
+    serde = { version = "1.0", features = ["derive"] }  
+    tracing = "0.1"  
+    anyhow = "1.0"  
+    wasmtime = "39.0.1" # 或者最新版  
+    rkyv = "0.8"      # 用于零拷贝  
+    tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+    cmx-core = { path = "crates/cmx-core" }  
+    cmx-protocol = { path = "crates/cmx-protocol" }  
